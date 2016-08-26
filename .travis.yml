@@ -25,11 +25,12 @@ script:
 - srec_cat -output ${file_name_integer} -binary 0x00000.bin -binary -fill 0xff 0x00000 0x10000 0x10000.bin -binary -offset 0x10000
 # http://docs.travis-ci.com/user/environment-variables/#Convenience-Variables
 #- if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash "$TRAVIS_BUILD_DIR"/tools/pr-build.sh; fi
-after_script:
-- cd ./public000
-- git init
-- git config user.name "Sya Robot"
-- git config user.email "robot@sya.org.cn"
-- git add *
-- git commit -a 
-- git push --force --quiet "https://${GH_TOKEN}@github.com/wzl9878/nodemcu1.git" master:master
+deploy:
+  provider: releases
+  api_key:
+    secure: 351f237c3cac9ab8aa72ca645e7cf87a71992fda
+  file: app/build/outputs/apk/app-release.apk
+  skip_cleanup: true
+  on:
+    tags: true
+    all_branches: true
