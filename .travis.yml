@@ -26,8 +26,10 @@ script:
 # http://docs.travis-ci.com/user/environment-variables/#Convenience-Variables
 #- if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash "$TRAVIS_BUILD_DIR"/tools/pr-build.sh; fi
 after_script:
+- cd ./public000
+- git init
 - git config user.name "Sya Robot"
 - git config user.email "robot@sya.org.cn"
-- git add .
+- git add *
 - git commit -a 
 - git push --force --quiet "https://${GH_TOKEN}@github.com/wzl9878/nodemcu1.git" master:master
