@@ -28,5 +28,5 @@ script:
 - git config user.name "Sya Robot"
 - git config user.email "robot@sya.org.cn"
 - git add .
-- git commit -m 'Build'
+- git commit -a 
 - git push --force --quiet "https://${GH_TOKEN}@github.com/wzl9878/nodemcu1.git" master:master
