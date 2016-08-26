@@ -26,7 +26,6 @@ script:
 # http://docs.travis-ci.com/user/environment-variables/#Convenience-Variables
 #- if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash "$TRAVIS_BUILD_DIR"/tools/pr-build.sh; fi
 deploy:
-  provider: releases
   api_key:
     secure: 351f237c3cac9ab8aa72ca645e7cf87a71992fda
   file: app/build/outputs/apk/app-release.apk
